@@ -37,6 +37,7 @@ public class InterfaceGraphique {
 	private JTextField textFieldQuoi;
 	static private ArbreLexicographique arbre;
 	private JTextField reponse;
+	
 
 	/**
 	 * Launch the application.
@@ -63,7 +64,7 @@ public class InterfaceGraphique {
 	public InterfaceGraphique() {
 		initialize();
 	}
-
+	
 	/**
 	 * Initialize the contents of the frame.
 	 */
@@ -83,7 +84,7 @@ public class InterfaceGraphique {
 		JMenuItem menuSauvegarder = new JMenuItem("Sauvegarder un arbre");
 		mnFichier.add(menuSauvegarder);
 
-		JMenuItem menuQuitter = new JMenuItem("Quitter");
+		JMenuItem menuQuitter = new JMenuItem("Quitter");		
 		mnFichier.add(menuQuitter);
 
 		JMenu mnAide = new JMenu("Aide");
@@ -189,6 +190,26 @@ public class InterfaceGraphique {
 		menuCharger.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				System.out.println("charger");
+				JFileChooser chooser = new JFileChooser();
+				int returnVal = chooser.showOpenDialog(frmTpArbreLexicographique);
+				if(returnVal == JFileChooser.APPROVE_OPTION){
+					String path = chooser.getSelectedFile().getAbsolutePath();
+					try {
+						arbre.charge(path);
+					} catch (Exception e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+				}
+			}
+		});
+		
+		//Quitter
+		menuQuitter.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				System.out.println("quitter");								
+				frmTpArbreLexicographique.setVisible(false);	
+				frmTpArbreLexicographique.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 			}
 		});
 
@@ -220,6 +241,7 @@ public class InterfaceGraphique {
 			}
 		});
 		
+		
 		// Chercher un mot
 		btnChercher.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -247,5 +269,7 @@ public class InterfaceGraphique {
 		// ---------------------------------------------------------------------------------------------------
 
 	}
+
+	
 
 }

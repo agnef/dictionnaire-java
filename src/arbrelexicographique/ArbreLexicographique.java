@@ -47,21 +47,21 @@ public class ArbreLexicographique {
 	
 	public static void main(String[] args) {
 		ArbreLexicographique arbre = new ArbreLexicographique();
-		System.out.println(arbre.ajout("exemple"));
+//		System.out.println(arbre.ajout("exemple"));
 		arbre.ajout("personne");
 		arbre.ajout("exo");
-		System.out.println(arbre.ajout("exemple"));
+//		System.out.println(arbre.ajout("exemple"));
 		arbre.ajout("dernier");
-		System.out.println(arbre);
-		System.out.println(arbre.suppr("absent"));
-		System.out.println(arbre.suppr("personne"));
-		System.out.println(arbre.suppr("personne"));
-		System.out.println(arbre);
-		System.out.println(arbre.contient("mot"));
-		System.out.println(arbre.contient("dernier"));
-		System.out.println(arbre.prefixe("der"));
-		System.out.println(arbre.prefixe("exa"));
-		System.out.println(arbre.nbMots());
+//		System.out.println(arbre);
+//		System.out.println(arbre.suppr("absent"));
+//		System.out.println(arbre.suppr("personne"));
+//		System.out.println(arbre.suppr("personne"));
+//		System.out.println(arbre);
+//		System.out.println(arbre.contient("mot"));
+//		System.out.println(arbre.contient("dernier"));
+//		System.out.println(arbre.prefixe("der"));
+//		System.out.println(arbre.prefixe("exa"));
+//		System.out.println(arbre.nbMots());
 	}
 
 }

@@ -10,7 +10,7 @@ public aspect Serialisation {
 
 	void ArbreLexicographique.sauve(String nomFichier) throws IOException {
 		String arbre = this.toString();
-		FileWriter fw = new FileWriter(new File("/home/dcissm2/doreln/Bureau/ProjetJavaS3/" + nomFichier));
+		FileWriter fw = new FileWriter(new File( nomFichier ));
 		for (int i = 0; i < arbre.length() - 1; i++) {
 			if (arbre.charAt(i) == ' ') {
 				fw.write("\n");
@@ -23,7 +23,7 @@ public aspect Serialisation {
 	void ArbreLexicographique.charge(String nomFichier) throws IOException {
 		String mot = "";
 		int i;
-		FileReader fr = new FileReader(new File("/home/dcissm2/doreln/Bureau/ProjetJavaS3/"+nomFichier              ));
+		FileReader fr = new FileReader(new File( nomFichier ));
 		while ((i = fr.read()) != -1) {
 			if ((char) i == '\n') {
 				this.ajout(mot);
