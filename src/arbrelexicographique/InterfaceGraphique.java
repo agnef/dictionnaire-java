@@ -87,8 +87,8 @@ public class InterfaceGraphique {
 		JMenuItem menuQuitter = new JMenuItem("Quitter");		
 		mnFichier.add(menuQuitter);
 
-		JMenu mnAide = new JMenu("Aide");
-		menuBar.add(mnAide);
+		JMenu menuAide = new JMenu("Aide");
+		menuBar.add(menuAide);
 
 		JPanel fonctionnalites = new JPanel();
 		frmTpArbreLexicographique.getContentPane().add(fonctionnalites, BorderLayout.CENTER);
@@ -194,8 +194,11 @@ public class InterfaceGraphique {
 				int returnVal = chooser.showOpenDialog(frmTpArbreLexicographique);
 				if(returnVal == JFileChooser.APPROVE_OPTION){
 					String path = chooser.getSelectedFile().getAbsolutePath();
+					
 					try {
 						arbre.charge(path);
+						list.setText(arbre.toString());
+						textNbMots.setText("Nombre mots :" + arbre.nbMots());
 					} catch (Exception e1) {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
@@ -212,6 +215,19 @@ public class InterfaceGraphique {
 				frmTpArbreLexicographique.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 			}
 		});
+       
+		//Aide
+//		menuAide.addActionListener(new ActionListener() {
+//			public void actionPerformed(ActionEvent e) {
+//				System.out.println("aide");								
+//				JFileChooser chooser = new JFileChooser();
+//				int returnVal = chooser.getFileSelectionMode();
+//				if(returnVal == JFileChooser.APPROVE_OPTION){
+//					System.out.println("ouvre");
+//				}
+//				
+//			}
+//		});
 
 		// Ajouter un mot
 		btnAjouter.addActionListener(new ActionListener() {
