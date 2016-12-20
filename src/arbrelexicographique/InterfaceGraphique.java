@@ -8,6 +8,7 @@ import javax.swing.JPanel;
 import java.awt.BorderLayout;
 import javax.swing.JToolBar;
 import javax.swing.JButton;
+import javax.swing.JFileChooser;
 import javax.swing.JTextField;
 import java.awt.FlowLayout;
 import javax.swing.JTextPane;
@@ -165,18 +166,29 @@ public class InterfaceGraphique {
 		frmTpArbreLexicographique.setBounds(100, 100, 450, 300);
 		frmTpArbreLexicographique.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-		// -----------------------------ACTION SUR LES BOUTONS--------------------------------------
+		// --------------------------------------ACTIONS---------------------------------------------------------
 		// Sauvegarder un arbre
 		menuSauvegarder.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				// modifier...
+			public void actionPerformed(ActionEvent e) {
+				System.out.println("sauvegarder");
+				JFileChooser chooser = new JFileChooser();
+			    int returnVal = chooser.showOpenDialog(frmTpArbreLexicographique);
+			    if(returnVal == JFileChooser.APPROVE_OPTION) {
+			    	 String path = chooser.getSelectedFile().getAbsolutePath();
+			    	 try {
+						arbre.sauve(path);
+					} catch (Exception e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+			    }
 			}
 		});
 
 		// Charger un arbre
 		menuCharger.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				//modifier....
+			public void actionPerformed(ActionEvent e) {
+				System.out.println("charger");
 			}
 		});
 
@@ -212,10 +224,10 @@ public class InterfaceGraphique {
 		btnChercher.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if( arbre.contient(textFieldQuoi.getText())){
-					reponse.setText("Le mot"+textFieldQuoi.getText()+"est dans l'arbre");
+					reponse.setText("Le mot "+textFieldQuoi.getText()+" est dans l'arbre");
 				}
 				else{
-					reponse.setText("Le mot"+textFieldQuoi.getText()+"n'est pas dans l'arbre");
+					reponse.setText("Le mot "+textFieldQuoi.getText()+" n'est pas dans l'arbre");
 				}
 			}
 		});
@@ -224,10 +236,10 @@ public class InterfaceGraphique {
 		btnPrefixe.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if( arbre.prefixe(textFieldQuoi.getText())){
-					reponse.setText("Le mot"+textFieldQuoi.getText()+"est un prefixe");
+					reponse.setText("Le mot "+textFieldQuoi.getText()+" est un prefixe");
 				}
 				else{
-					reponse.setText("Le mot"+textFieldQuoi.getText()+"n'est pas un prefixe");
+					reponse.setText("Le mot "+textFieldQuoi.getText()+" n'est pas un prefixe");
 				}
 			}
 		});
